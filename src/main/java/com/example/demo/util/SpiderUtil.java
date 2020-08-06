@@ -92,13 +92,17 @@ public class SpiderUtil {
                 Elements img = element.getElementsByTag("img");
                 String attr = img.attr("data-src");
                 img.attr("src",attr);
-
             }
-            for (Element element: p) {
+         /*   for (Element element: p) {
                 String html = element.html();
                 sb.append(html);
+            }*/
+            Element content1 = document.getElementById("js_content");
+            Elements p1 = content1.getElementsByTag("p");
+            for (int i=0; i<p1.size()-10; i++) {
+                sb.append(p1.get(i).html());
             }
-
+            System.out.println(p1.size());
             JSONObject json = new JSONObject(new LinkedHashMap<>());
             json.put(KEY_TITLE, title);
             json.put(KEY_COVER_URL, coverUrl);
